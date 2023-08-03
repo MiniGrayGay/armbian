@@ -45,7 +45,7 @@ jobs:
         aws configure set region us-east-1
     - name: 上传文件到 S3
       run: |
-        s3url="https://open-94a11d64-9ef0-4eb9-ba56-0a4b595ab9d1-s3.saturn.xxyy.co:8443/armbian/build/orangepi5/build_${current_time}.tar.xz"
+        s3url="s3://open-94a11d64-9ef0-4eb9-ba56-0a4b595ab9d1-s3.saturn.xxyy.co:8443/armbian/build/orangepi5/build_${current_time}.tar.xz"
         echo "Endpoint is: $s3url"
         aws s3 cp build.tar.xz $s3url
     - name: 文件导出到 Github
