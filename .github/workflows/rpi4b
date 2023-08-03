@@ -1,0 +1,35 @@
+name: rpi4b
+
+on:
+  push:
+    branches:
+      - main
+      
+jobs:
+  build:
+    runs-on: ubuntu-latest
+
+    steps:
+    - name: Checkout repository
+      uses: actions/checkout@v2
+
+    - name: 纳西妲小脚丫子炫我嘴里！
+      run: |
+        sudo chmod +x compile.sh
+    - name: 编译【香橙派5】最小化镜像
+      run: |
+        ./compile.sh \
+        BOARD=rpi4b \
+        BRANCH=edge \
+        RELEASE=focal \
+        BUILD_MINIMAL=yes \
+        BUILD_DESKTOP=no \
+        KERNEL_CONFIGURE=no \
+    - name: 打包镜像
+      run: |
+        sudo tar -cJf build.tar.xz output/images
+    - name: 文件导出
+      uses: actions/upload-artifact@v2
+      with:
+        name: build.tar.xz
+        path: build.tar.xz
