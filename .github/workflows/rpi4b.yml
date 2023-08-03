@@ -1,9 +1,7 @@
 name: 树莓派4B
 
 on:
-  push:
-    branches:
-      - main
+  workflow_dispatch:
       
 jobs:
   build:
