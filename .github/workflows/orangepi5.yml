@@ -17,7 +17,7 @@ jobs:
         echo "current_time=$(date +'%Y%m%d%H%M%S')" >> $GITHUB_ENV
         echo ""
         echo ""
-        echo "cat /etc/lsb-release"
+        cat /etc/lsb-release
         echo ""
         echo ""
     - name: 编译【香橙派5】最小化镜像
