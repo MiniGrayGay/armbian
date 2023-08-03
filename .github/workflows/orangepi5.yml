@@ -22,6 +22,20 @@ jobs:
     - name: Prepare Build
       run: |
         sudo chmod +x compile.sh
-    - name: Prepare Build
+    - name: Build OrangePi5 Minimal
       run: |
-        ls -al && pwd
+        ./compile.sh \
+        BOARD=orangepi5 \
+        BRANCH=current \
+        RELEASE=focal \
+        BUILD_MINIMAL=yes \
+        BUILD_DESKTOP=no \
+        KERNEL_CONFIGURE=no \
+    - name:  Export Image
+      run: |
+        sudo tar -cJf build.tar.xz output/images
+    - name: Prepare Build
+      uses: actions/upload-artifact@v2
+      with:
+        name: build.tar.xz
+        path: build.tar.xz
