@@ -13,28 +13,22 @@ jobs:
     - name: Checkout repository
       uses: actions/checkout@v2
 
-    - name: Prepare packages
-      run: |
-        sudo apt update -y
-    - name: Install Environment
-      run: |
-        sudo apt install build-essential autoconf automake libtool pkg-config zlib1g-dev -y
-    - name: Prepare Build
+    - name: 纳西妲小脚丫子炫我嘴里！
       run: |
         sudo chmod +x compile.sh
-    - name: Build OrangePi5 Minimal
+    - name: 编译【香橙派5】最小化镜像
       run: |
         ./compile.sh \
         BOARD=orangepi5 \
-        BRANCH=current \
+        BRANCH=edge \
         RELEASE=focal \
         BUILD_MINIMAL=yes \
         BUILD_DESKTOP=no \
         KERNEL_CONFIGURE=no \
-    - name:  Export Image
+    - name: 打包镜像
       run: |
         sudo tar -cJf build.tar.xz output/images
-    - name: Prepare Build
+    - name: 文件导出
       uses: actions/upload-artifact@v2
       with:
         name: build.tar.xz
