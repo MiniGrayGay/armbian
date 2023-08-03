@@ -1,0 +1,27 @@
+name: OrangePi5
+
+on:
+  push:
+    branches:
+      - main
+      
+jobs:
+  build:
+    runs-on: ubuntu-latest
+
+    steps:
+    - name: Checkout repository
+      uses: actions/checkout@v2
+
+    - name: Prepare packages
+      run: |
+        sudo apt update -y
+    - name: Install Environment
+      run: |
+        sudo apt install build-essential autoconf automake libtool pkg-config zlib1g-dev -y
+    - name: Prepare Build
+      run: |
+        sudo chmod +x compile.sh
+    - name: Prepare Build
+      run: |
+        ls -al && pwd
